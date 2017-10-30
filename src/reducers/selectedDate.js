@@ -6,8 +6,8 @@ const initialState = {
 
 export const selectedDate = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_SELECTED_MONTH':
-      return state.month;
+    case 'CHANGE_DATE':
+      return Object.assign({}, state, action.changes)
     default:
       return state;
   }
