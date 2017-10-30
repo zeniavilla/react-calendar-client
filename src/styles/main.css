@@ -1,0 +1,19 @@
+body {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.calendar {
+  background-color: #424242;
+  height: 700px;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.col {
+  float: left;
+  width: 14%;
+}
