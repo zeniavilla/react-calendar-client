@@ -3,12 +3,22 @@ import { connect } from 'react-redux';
 
 // Components
 import Header from '../components/Header';
+import changeDate from '../actions/DateActions';
 
 class App extends Component {
+  prevMonth = event => {
+    let currDate = this.props.selectedDate;
+    if (this.props.selectedDate.month === 0) {
+      this.props.changeDate({ month: 11, year: currDate.year - 1 });
+    } else {
+      this.props.changeDate({month: currDate.month - 1});
+    }
+  }
+
   render() {
     return (
       <div className="calendar">
-        <Header selectedDate={this.props.selectedDate} />
+        <Header selectedDate={this.props.selectedDate} prevMonth={this.prevMonth} nextMonth={this.nextMonth} />
       </div>
     );
   }
@@ -18,4 +28,4 @@ const mapStateToProps = state => {
   return ({ selectedDate: state.selectedDate })
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { changeDate })(App);
