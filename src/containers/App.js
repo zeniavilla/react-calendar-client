@@ -8,10 +8,19 @@ import changeDate from '../actions/DateActions';
 class App extends Component {
   prevMonth = event => {
     let currDate = this.props.selectedDate;
-    if (this.props.selectedDate.month === 0) {
+    if (currDate.month === 0) {
       this.props.changeDate({ month: 11, year: currDate.year - 1 });
     } else {
       this.props.changeDate({month: currDate.month - 1});
+    }
+  }
+
+  nextMonth = event => {
+    let currDate = this.props.selectedDate;
+    if (currDate.month === 11) {
+      this.props.changeDate({ month: 0, year: currDate.year + 1 });
+    } else {
+      this.props.changeDate({ month: currDate.month + 1 });
     }
   }
 
