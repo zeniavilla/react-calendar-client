@@ -1,10 +1,18 @@
 import React from 'react';
 
+// Styles
+import '../styles/components/dates.css';
+
 const Dates = props => {
-  console.log(typeof(props.date))
   return (
-    <div className="col" id={props.date}>
-      {isNaN(props.date) ? '' : props.date}
+    <div>
+      {
+        isNaN(props.date) 
+        ? <div className="col"></div> 
+        : <div className="col" id={`day-${props.date}`}>
+          <span className="date-text">{props.date}</span>
+        </div>
+      }
     </div>
   )
 }
