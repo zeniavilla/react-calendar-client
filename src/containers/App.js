@@ -10,13 +10,13 @@ class App extends Component {
   prevMonth = () => {
     let currDate = this.props.selectedDate;
     if (currDate.month === 0) {
-      this.props.changeDate({ month: 11, year: currDate.year - 1 });
+      this.props.changeDate({ month: 11, year: currDate.year - 1, day: '' });
     } else {
-      this.props.changeDate({month: currDate.month - 1});
+      this.props.changeDate({ month: currDate.month - 1, day: '' });
     }
   }
 
-  // returns array of month dates
+  // Returns array of month dates
   numDaysInMonth = (year, month) => {
     let numDays = new Date(year, month + 1, 0).getDate();
     let datesArray = Array.apply(null, {length: numDays}).map(Number.call, Number);
@@ -33,9 +33,9 @@ class App extends Component {
   nextMonth = () => {
     let currDate = this.props.selectedDate;
     if (currDate.month === 11) {
-      this.props.changeDate({ month: 0, year: currDate.year + 1 });
+      this.props.changeDate({ month: 0, year: currDate.year + 1, day: '' });
     } else {
-      this.props.changeDate({ month: currDate.month + 1 });
+      this.props.changeDate({ month: currDate.month + 1, day: '' });
     }
   }
 
@@ -45,6 +45,13 @@ class App extends Component {
     }
     document.getElementById(event.target.id).className += " selected";
     this.props.changeDate({ day: parseInt(event.target.id.split('-')[1]) });
+  }
+
+  // Reset 'selected' date class when switching to a new month
+  componentDidUpdate = (prevProps, prevState) => {
+    if (this.props.selectedDate.month !== prevProps.selectedDate.month && prevProps.selectedDate.day !== '') {
+      document.getElementById(`day-${prevProps.selectedDate.day}`).classList.remove("selected")
+    }
   }
 
   render() {
