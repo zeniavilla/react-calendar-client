@@ -9,8 +9,8 @@ const Dates = props => {
       {
         isNaN(props.date) 
         ? <div className="col"></div> 
-        : <div className="col" id={`day-${props.date}`}>
-          <span className="date-text">{props.date}</span>
+        : <div className="col" id={`day-${props.date}`} onClick={props.handleOnClick}>
+          {props.date}
         </div>
       }
     </div>
