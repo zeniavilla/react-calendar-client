@@ -6,21 +6,20 @@ const Header = props => {
   const dayAbbrev = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
   const { month, year } = props.selectedDate;
   const displayDays = () => {
-    return dayNames.map(day => 
-      <div className="col">
+    return dayAbbrev.map(day => 
+      <div className="col" key={dayAbbrev.indexOf(day)} id={dayAbbrev.indexOf(day)}>
         <h4>{day}</h4>
       </div>
     )};
 
   return (
     <div>
-
       <h1>
         <i className="fa fa-angle-left" onClick={props.prevMonth} aria-hidden="true"></i>
         {monthNames[month]} {year}
         <i className="fa fa-angle-right" onClick={props.nextMonth} aria-hidden="true"></i>
       </h1>
-      <div className="row">
+      <div className="headerRow">
         {displayDays()}
       </div>
     </div>
