@@ -21,7 +21,7 @@ class App extends Component {
     let numDays = new Date(year, month + 1, 0).getDate();
     let datesArray = Array.apply(null, {length: numDays}).map(Number.call, Number);
     for (let i = 0; i < this.firstDayOfMonth(year, month + 1); i++) {
-      datesArray.unshift('');
+      datesArray.unshift(undefined);
     }
     return datesArray;
   }
