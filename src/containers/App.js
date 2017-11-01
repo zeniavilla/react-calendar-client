@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Dates from '../components/Dates';
 import AppointmentNew from '../components/AppointmentNew';
+import AppointmentsContainer from './AppointmentsContainer';
 
 // Actions
 import changeDate from '../actions/DateActions';
@@ -86,6 +87,8 @@ class App extends Component {
   render() {
     return (
       <div>
+        {this.props.selectedDate.day !== '' ? <AppointmentNew handleNewAppt={this.createAppt} handleTitleChange={this.updateTitleChange} appointmentForm={this.props.appointmentForm} /> : 'Select a date to schedule an appointment.'}
+        
         <div className="calendar">
           <Header selectedDate={this.props.selectedDate} prevMonth={this.prevMonth} nextMonth={this.nextMonth} />
           <div className="dates-rows">
@@ -96,7 +99,10 @@ class App extends Component {
             }
           </div>
         </div>
-        {this.props.selectedDate.day !== '' ? <AppointmentNew handleNewAppt={this.createAppt} handleTitleChange={this.updateTitleChange} appointmentForm={this.props.appointmentForm} /> : 'Select a date to schedule an appointment.'}
+
+        <div className="appointments-list">
+          <AppointmentsContainer appointments={this.props.dateAppointments} />
+        </div>
       </div>
     );
   }
@@ -105,7 +111,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return ({ 
     selectedDate: state.selectedDate,
-    appointmentForm: state.appointmentForm
+    appointmentForm: state.appointmentForm,
+    dateAppointments: state.dateAppointments
   })
 }
 
