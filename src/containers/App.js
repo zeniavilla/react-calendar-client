@@ -8,8 +8,7 @@ import AppointmentNew from '../components/AppointmentNew';
 
 // Actions
 import changeDate from '../actions/DateActions';
-import createAppointment from '../actions/AppointmentActions';
-import updateTitle from '../actions/AppointmentFormActions';
+import { createAppointment, updateTitle } from '../actions/AppointmentActions';
 
 class App extends Component {
   prevMonth = () => {

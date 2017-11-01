@@ -9,9 +9,16 @@ const getAppointments = date => {
   }
 }
 
+export const updateTitle = obj => {
+  return {
+    type: 'UPDATE_TITLE',
+    obj
+  }
+}
+
 // Aync Actions
 
-const createAppointment = appointment => {
+export const createAppointment = appointment => {
   debugger
   return dispatch => {
     return fetch("http://localhost:3001/api/appointments", {
@@ -26,5 +33,3 @@ const createAppointment = appointment => {
     .catch(error => console.log(error))
   }
 }
-
-export default createAppointment;
