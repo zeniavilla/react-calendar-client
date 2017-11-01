@@ -54,8 +54,13 @@ class App extends Component {
 
   createAppt = event => {
     event.preventDefault();
-    console.log(event.target)
-    // this.props.createAppointment(this.props.selectedDate);
+    const d = this.props.selectedDate;
+    const appObj = Object.assign({},
+      this.props.appointmentForm, {
+        date: `${d.year}-${d.month + 1}-${d.day}`
+      }
+    )
+    this.props.createAppointment(appObj);
   }
 
   updateTitleChange = event => {
