@@ -16,10 +16,15 @@ export const updateTitle = obj => {
   }
 }
 
+const resetForm = () => {
+  return {
+    type: 'RESET_FORM'
+  }
+}
+
 // Aync Actions
 
 export const createAppointment = appointment => {
-  debugger
   return dispatch => {
     return fetch("http://localhost:3001/api/appointments", {
       method: 'POST',
@@ -29,7 +34,10 @@ export const createAppointment = appointment => {
       body: JSON.stringify({ appointment: appointment })
     })
     .then(response => response.json())
-    .then(appointment => dispatch(getAppointments(appointment.date)))
+    .then(appointment => {
+      dispatch(getAppointments(appointment.date))
+      dispatch(resetForm())
+    })
     .catch(error => console.log(error))
   }
 }
