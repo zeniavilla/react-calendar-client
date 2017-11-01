@@ -1,8 +1,6 @@
-const changeDate = changes => {
+export const changeDate = changes => {
   return {
     type: 'CHANGE_DATE',
     changes
   }
 }
-
-export default changeDate;

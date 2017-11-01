@@ -8,7 +8,7 @@ import AppointmentNew from '../components/AppointmentNew';
 import AppointmentsContainer from './AppointmentsContainer';
 
 // Actions
-import changeDate from '../actions/DateActions';
+import { changeDate } from '../actions/DateActions';
 import { createAppointment, updateTitle, getAppointments } from '../actions/AppointmentActions';
 
 class App extends Component {
