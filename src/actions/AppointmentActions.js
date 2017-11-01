@@ -9,6 +9,13 @@ const setAppointments = appointments => {
   }
 }
 
+const addAppointment = appointment => {
+  return {
+    type: 'ADD_APPOINTMENT',
+    appointment
+  }
+}
+
 export const updateTitle = obj => {
   return {
     type: 'UPDATE_TITLE',
@@ -35,6 +42,7 @@ export const createAppointment = appointment => {
     })
     .then(response => response.json())
     .then(appointment => {
+      dispatch(addAppointment(appointment))
       dispatch(resetForm())
     })
     .catch(error => console.log(error))
