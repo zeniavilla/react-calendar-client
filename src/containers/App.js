@@ -85,23 +85,31 @@ class App extends Component {
   }
 
   render() {
+    let renderForm = 
+      this.props.selectedDate.day !== '' 
+      ? <AppointmentNew handleNewAppt={this.createAppt} handleTitleChange={this.updateTitleChange} appointmentForm={this.props.appointmentForm} /> 
+      : 'Select a date to schedule an appointment.';
+    let renderAppts =
+      this.props.dateAppointments.length && this.props.selectedDate.day !== '' 
+      ? <AppointmentsContainer appointments={this.props.dateAppointments} />
+      : 'No events';
+    let renderDates =
+      this.numDaysInMonth(this.props.selectedDate.year, this.props.selectedDate.month).map(
+        date => <Dates key={date} date={date + 1} handleOnClick={this.handleOnClick} />
+      );
+
     return (
       <div>
-        {this.props.selectedDate.day !== '' ? <AppointmentNew handleNewAppt={this.createAppt} handleTitleChange={this.updateTitleChange} appointmentForm={this.props.appointmentForm} /> : 'Select a date to schedule an appointment.'}
-        
+        {renderForm}    
         <div className="calendar">
           <Header selectedDate={this.props.selectedDate} prevMonth={this.prevMonth} nextMonth={this.nextMonth} />
           <div className="dates-rows">
-            {
-              this.numDaysInMonth(this.props.selectedDate.year, this.props.selectedDate.month).map(
-                date => <Dates key={date} date={date + 1} handleOnClick={this.handleOnClick} />
-              )
-            }
+            {renderDates}
           </div>
         </div>
 
         <div className="appointments-list">
-          <AppointmentsContainer appointments={this.props.dateAppointments} />
+          {renderAppts}
         </div>
       </div>
     );
