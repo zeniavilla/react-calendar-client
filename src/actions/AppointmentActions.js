@@ -16,6 +16,13 @@ const addAppointment = appointment => {
   }
 }
 
+const removeAppointment = id => {
+  return {
+    type: 'REMOVE_APPOINTMENT',
+    id
+  }
+}
+
 export const updateTitle = obj => {
   return {
     type: 'UPDATE_TITLE',
@@ -67,7 +74,11 @@ export const deleteAppointment = id => {
   return dispatch => {
     return fetch(`http://localhost:3001/api/appointments/${id}`, {
       method: 'DELETE'
-    }).then(response => response.json())
+    })
+    .then(response => {
+      response.text()
+      dispatch(removeAppointment(id))
+    })
     .catch(error => console.log(error))
   }
 }
