@@ -54,3 +54,12 @@ export const getAppointments = date => {
     .catch(error => console.log(error))
   }
 }
+
+export const deleteAppointment = id => {
+  return dispatch => {
+    return fetch(`http://localhost:3001/api/appointments/${id}`, {
+      method: 'DELETE'
+    }).then(response => response.json())
+    .catch(error => console.log(error))
+  }
+}
