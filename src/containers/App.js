@@ -8,7 +8,7 @@ import AppointmentNew from '../components/AppointmentNew';
 
 // Actions
 import changeDate from '../actions/DateActions';
-import { createAppointment, updateTitle } from '../actions/AppointmentActions';
+import { createAppointment, updateTitle, getAppointments } from '../actions/AppointmentActions';
 
 class App extends Component {
   prevMonth = () => {
@@ -71,10 +71,15 @@ class App extends Component {
     this.props.updateTitle(currentTitle);
   }
 
-  // Reset 'selected' date class when switching to a new month
   componentDidUpdate = (prevProps, prevState) => {
+    const d = this.props.selectedDate;
+    // Reset 'selected' date class when switching to a new month
     if (this.props.selectedDate.month !== prevProps.selectedDate.month && prevProps.selectedDate.day !== '') {
       document.getElementById(`day-${prevProps.selectedDate.day}`).classList.remove("selected")
+    }
+    // Load appointments when day is selected
+    if (this.props.selectedDate.day !== prevProps.selectedDate.day) {
+      this.props.getAppointments(`${d.year}-${d.month + 1}-${d.day}`);
     }
   }
 
@@ -91,7 +96,7 @@ class App extends Component {
             }
           </div>
         </div>
-        {this.props.selectedDate.day !== '' ? <AppointmentNew handleNewAppt={this.createAppt} handleTitleChange={this.updateTitleChange} /> : 'Select a date to schedule an appointment.'}
+        {this.props.selectedDate.day !== '' ? <AppointmentNew handleNewAppt={this.createAppt} handleTitleChange={this.updateTitleChange} appointmentForm={this.props.appointmentForm} /> : 'Select a date to schedule an appointment.'}
       </div>
     );
   }
@@ -104,4 +109,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, { changeDate, createAppointment, updateTitle })(App);
+export default connect(mapStateToProps, { changeDate, createAppointment, updateTitle, getAppointments })(App);
