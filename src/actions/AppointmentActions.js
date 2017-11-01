@@ -1,22 +1,28 @@
-const API_URL = process.env.API_URL;
+const API_URL = process.env.REACT_API_URL;
 
 // Action Creators
 
-
+const getAppointments = date => {
+  return {
+    type: 'GET_DATE_APPOINTMENTS',
+    date
+  }
+}
 
 // Aync Actions
 
 const createAppointment = appointment => {
-  return disptach => {
-    return fetch(`${API_URL}/appointments`, {
+  debugger
+  return dispatch => {
+    return fetch("http://localhost:3001/api/appointments", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ user: user })
+      body: JSON.stringify({ appointment: appointment })
     })
     .then(response => response.json())
-    .then(appointment => dispatch(getAppointments(appointment)))
+    .then(appointment => dispatch(getAppointments(appointment.date)))
     .catch(error => console.log(error))
   }
 }
