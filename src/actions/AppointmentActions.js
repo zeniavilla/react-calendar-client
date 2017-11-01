@@ -2,10 +2,10 @@ const API_URL = process.env.REACT_API_URL;
 
 // Action Creators
 
-const getAppointments = date => {
+const setAppointments = appointments => {
   return {
     type: 'GET_DATE_APPOINTMENTS',
-    date
+    appointments
   }
 }
 
@@ -35,9 +35,22 @@ export const createAppointment = appointment => {
     })
     .then(response => response.json())
     .then(appointment => {
-      dispatch(getAppointments(appointment.date))
       dispatch(resetForm())
     })
+    .catch(error => console.log(error))
+  }
+}
+
+export const getAppointments = date => {
+  return dispatch => {
+    return fetch(`http://localhost:3001/api/appointments/${date}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(appointments => dispatch(setAppointments(appointments)))
     .catch(error => console.log(error))
   }
 }
