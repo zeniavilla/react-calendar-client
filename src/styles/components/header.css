@@ -1,0 +1,23 @@
+i[class*="angle-"] {
+  font-weight: 600;
+}
+
+i[class*="angle-"]:hover {
+  opacity: .6;
+  transition-duration: .7s;
+}
+
+span.btn-round {
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+span.btn-round.left {
+  float: left;
+  margin-left: 20px;
+}
+
+span.btn-round.right {
+  float: right;
+  margin-right: 20px;
+}
