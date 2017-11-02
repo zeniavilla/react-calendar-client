@@ -1,0 +1,12 @@
+.dates-rows div[id*="day"] {
+  padding-top: 10px;
+}
+
+.dates-rows div[id*="day"]:hover {
+  background-color: #00838F;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #00838F;
+}
