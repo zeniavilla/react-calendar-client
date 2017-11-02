@@ -104,7 +104,7 @@ class App extends Component {
       this.props.selectedDate.day !== ''
       ? <div className="col-cal dark-row">{monthNames[this.props.selectedDate.month]} {this.props.selectedDate.day}, {this.props.selectedDate.year}</div>
       : null;
-console.log(process.env)
+
     return (
       <div>
         <div className="calendar">

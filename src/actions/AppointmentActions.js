@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_API_URL;
+const API_URL = process.env.REACT_APP_API_URL;
 
 // Action Creators
 
@@ -40,7 +40,7 @@ const resetForm = () => {
 
 export const createAppointment = appointment => {
   return dispatch => {
-    return fetch("http://localhost:3001/api/appointments", {
+    return fetch(`${API_URL}/appointments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ export const createAppointment = appointment => {
 
 export const getAppointments = date => {
   return dispatch => {
-    return fetch(`http://localhost:3001/api/appointments/${date}`, {
+    return fetch(`${API_URL}/appointments/${date}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ export const getAppointments = date => {
 
 export const deleteAppointment = id => {
   return dispatch => {
-    return fetch(`http://localhost:3001/api/appointments/${id}`, {
+    return fetch(`${API_URL}/appointments/${id}`, {
       method: 'DELETE'
     })
     .then(response => {
