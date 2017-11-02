@@ -40,6 +40,12 @@ i.fa.fa-calendar {
   color: #fff;
 }
 
+.light-row {
+  background-color: #80c4cb;
+  border-bottom: 1px solid #fff;
+  text-align: left;
+}
+
 .btn-primary {
   background-color: #ef4b82;
   border: 1px solid #da5783;
