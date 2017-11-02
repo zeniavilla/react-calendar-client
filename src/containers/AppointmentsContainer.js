@@ -7,6 +7,9 @@ import AppointmentListItem from '../components/AppointmentListItem';
 // Actions
 import { deleteAppointment } from '../actions/AppointmentActions';
 
+// Styles
+import '../styles/components/appointments.css';
+
 class AppointmentsContainer extends Component {
   constructor(props) {
     super(props)
@@ -14,6 +17,7 @@ class AppointmentsContainer extends Component {
 
   handleDeleteAppointment = event => {
     event.preventDefault();
+    debugger
     this.props.deleteAppointment(event.target.id);
   }
 
@@ -22,9 +26,9 @@ class AppointmentsContainer extends Component {
       appt => <AppointmentListItem key={appt.id} appointment={appt} deleteAppointment={this.handleDeleteAppointment} />
     );
     return(
-      <ul>
+      <div className="appointments-container">
         {displayAppointments}
-      </ul>
+      </div>
     )
   }
 }
