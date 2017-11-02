@@ -83,33 +83,39 @@ class App extends Component {
       this.props.getAppointments(`${d.year}-${d.month + 1}-${d.day}`);
     }
   }
-
+  
   render() {
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     let renderForm = 
       this.props.selectedDate.day !== '' 
       ? <AppointmentNew handleNewAppt={this.createAppt} handleTitleChange={this.updateTitleChange} appointmentForm={this.props.appointmentForm} /> 
-      : 'Select a date to schedule an appointment.';
+      : <div className="text">Select a date to schedule an appointment.</div>;
     let renderAppts = 
       this.props.selectedDate.day !== ''
       ? (this.props.dateAppointments.length
         ? <AppointmentsContainer appointments={this.props.dateAppointments} />
-        : 'No events')
+        : <div className="text"><i class="fa fa-calendar" aria-hidden="true"></i>No events</div>)
       : null;
     let renderDates =
       this.numDaysInMonth(this.props.selectedDate.year, this.props.selectedDate.month).map(
         date => <Dates key={date} date={date + 1} handleOnClick={this.handleOnClick} />
       );
+    let renderSelectedDate =
+      this.props.selectedDate.day !== ''
+      ? <div className="selected-date">{monthNames[this.props.selectedDate.month]} {this.props.selectedDate.day}, {this.props.selectedDate.year}</div>
+      : null;
 
     return (
       <div>
-        {renderForm}    
         <div className="calendar">
-          <Header selectedDate={this.props.selectedDate} prevMonth={this.prevMonth} nextMonth={this.nextMonth} />
+          <Header selectedDate={this.props.selectedDate} monthNames={monthNames} prevMonth={this.prevMonth} nextMonth={this.nextMonth} />
           <div className="dates-rows">
             {renderDates}
           </div>
         </div>
-
+        
+        {renderSelectedDate}
+        {renderForm}    
         <div className="appointments-list">
           {renderAppts}
         </div>
