@@ -9,6 +9,9 @@ body {
   background-color: #006064;
   color: #fff;
   height: 595px;
+}
+
+.col-cal, .calendar {
   margin: 0 auto;
   padding: 15px;
   width: 25%;
@@ -32,10 +35,7 @@ i.fa.fa-calendar {
   margin-right: 14px;
 }
 
-.btn-primary {
-  background-color: #88c2e4;
-  border: none;
-  font-size: 1.2em;
-  height: 38px;
-  width: 70px;
+.dark-row {
+  background-color: #034749;
+  color: #fff;
 }
