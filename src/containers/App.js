@@ -94,7 +94,7 @@ class App extends Component {
       this.props.selectedDate.day !== ''
       ? (this.props.dateAppointments.length
         ? <AppointmentsContainer appointments={this.props.dateAppointments} />
-        : <div className="text"><i class="fa fa-calendar" aria-hidden="true"></i>No events</div>)
+        : <div className="text"><i className="fa fa-calendar" aria-hidden="true"></i>No events</div>)
       : null;
     let renderDates =
       this.numDaysInMonth(this.props.selectedDate.year, this.props.selectedDate.month).map(
@@ -102,7 +102,7 @@ class App extends Component {
       );
     let renderSelectedDate =
       this.props.selectedDate.day !== ''
-      ? <div className="selected-date">{monthNames[this.props.selectedDate.month]} {this.props.selectedDate.day}, {this.props.selectedDate.year}</div>
+      ? <div className="col-cal dark-row">{monthNames[this.props.selectedDate.month]} {this.props.selectedDate.day}, {this.props.selectedDate.year}</div>
       : null;
 
     return (
