@@ -43,9 +43,14 @@ i.fa.fa-calendar {
 .btn-primary {
   background-color: #ef4b82;
   border: 1px solid #da5783;
-  border-radius: 2px;
   color: #fff;
+  cursor: pointer;
   font-size: 1.2em;
   height: 45px;
   width: 50px;
+}
+
+.btn-primary:hover {
+  opacity: .8;
+  transition-duration: .5s;
 }
