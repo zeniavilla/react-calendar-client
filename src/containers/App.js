@@ -49,7 +49,7 @@ class App extends Component {
       document.getElementById(`day-${this.props.selectedDate.day}`).classList.remove("selected")
     }
     document.getElementById(event.target.id).className += " selected";
-    this.props.changeDate({ day: parseInt(event.target.id.split('-')[1]) });
+    this.props.changeDate({ day: parseInt(event.target.id.split('-')[1], 10) });
   }
 
   createAppt = event => {
@@ -104,7 +104,7 @@ class App extends Component {
       this.props.selectedDate.day !== ''
       ? <div className="col-cal dark-row">{monthNames[this.props.selectedDate.month]} {this.props.selectedDate.day}, {this.props.selectedDate.year}</div>
       : null;
-
+console.log(process.env)
     return (
       <div>
         <div className="calendar">

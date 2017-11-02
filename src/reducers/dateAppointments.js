@@ -5,7 +5,7 @@ export const dateAppointments = (state = [], action) => {
     case 'ADD_APPOINTMENT':
       return [...state, action.appointment];
     case 'REMOVE_APPOINTMENT':
-      return state.filter(obj => obj.id !== parseInt(action.id));
+      return state.filter(obj => obj.id !== parseInt(action.id, 10));
     default:
       return state;
   }
