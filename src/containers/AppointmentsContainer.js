@@ -17,7 +17,6 @@ class AppointmentsContainer extends Component {
 
   handleDeleteAppointment = event => {
     event.preventDefault();
-    debugger
     this.props.deleteAppointment(event.target.id);
   }
 
