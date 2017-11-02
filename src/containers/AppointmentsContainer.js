@@ -7,9 +7,6 @@ import AppointmentListItem from '../components/AppointmentListItem';
 // Actions
 import { deleteAppointment } from '../actions/AppointmentActions';
 
-// Styles
-import '../styles/components/appointments.css';
-
 class AppointmentsContainer extends Component {
   constructor(props) {
     super(props)
