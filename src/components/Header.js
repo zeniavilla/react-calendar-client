@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Styles
+import '../styles/components/header.css';
+
 const Header = props => {
   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -15,9 +18,13 @@ const Header = props => {
   return (
     <div>
       <h1>
-        <i className="fa fa-angle-left" onClick={props.prevMonth} aria-hidden="true"></i>
+        <span className="btn-round left" onClick={props.prevMonth}>
+          <i className="fa fa-angle-left" aria-hidden="true"></i>
+        </span>
         {monthNames[month]} {year}
-        <i className="fa fa-angle-right" onClick={props.nextMonth} aria-hidden="true"></i>
+        <span className="btn-round right" onClick={props.nextMonth}>
+          <i className="fa fa-angle-right" aria-hidden="true"></i>
+        </span>
       </h1>
       <div className="headerRow">
         {displayDays()}
