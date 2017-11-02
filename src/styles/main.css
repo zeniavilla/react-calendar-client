@@ -1,5 +1,4 @@
 body {
-  color: #fff;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -8,12 +7,15 @@ body {
 
 .calendar {
   background-color: #424242;
-  height: 700px;
+  color: #fff;
+  height: 595px;
   margin: 0 auto;
-  width: 50%;
+  padding: 15px;
+  width: 25%;
 }
 
 .col {
   float: left;
+  height: 65px;
   width: 14%;
 }
