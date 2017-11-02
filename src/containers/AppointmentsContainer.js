@@ -8,10 +8,6 @@ import AppointmentListItem from '../components/AppointmentListItem';
 import { deleteAppointment } from '../actions/AppointmentActions';
 
 class AppointmentsContainer extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   handleDeleteAppointment = event => {
     event.preventDefault();
     this.props.deleteAppointment(event.target.id);
